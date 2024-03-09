@@ -23,7 +23,15 @@ type ServerGetResponse struct {
 }
 
 func main() {
-	payload := &Payload{Symbol: "ETH", Price: 4500, Timestamp: 1678912345}
+	var symbol string
+	var price, timestamp uint64
+	fmt.Print("symbol: ")
+	fmt.Scanf("%s\n", &symbol)
+	fmt.Print("price: ")
+	fmt.Scanf("%d\n", &price)
+	fmt.Print("timestamp: ")
+	fmt.Scanf("%d\n", timestamp)
+	payload := &Payload{Symbol: symbol, Price: price, Timestamp: timestamp}
 
 	serverPostResponse := getTxHash(*payload)
 	serverGetResponse := getTxStatus(*serverPostResponse)
